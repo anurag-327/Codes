@@ -1,0 +1,76 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct tree
+{
+    tree *left;
+    tree *right;
+    int data;
+};
+tree *create(int val)
+{
+    tree *t=new tree;
+    t->data=val;
+    t->left=NULL;
+    t->right=NULL;
+    return t;
+}
+void preorder(tree *root)
+{
+    if(root!=NULL)
+    {
+        cout<<" "<<root->data;
+        preorder(root->left);
+        preorder(root->right);
+    }
+}
+void postorder(tree *root)
+{
+    if(root!=NULL)
+    {
+        postorder(root->left);
+        postorder(root->right);
+        cout<<" "<<root->data;
+    }
+}
+void inorder(tree *root)
+{
+    if(root!=NULL)
+    {
+        inorder(root->left);
+        cout<<" "<<root->data;
+        inorder(root->right);
+    }
+}
+
+int main()
+{
+    tree *root=create(45);
+    tree *p1=create(56);
+    tree *p2=create(78);
+    tree *p3=create(23);
+    tree *p4=create(86);
+    tree *p5=create(34);
+    tree *p6=create(13);
+    root->right=p2;
+    root->left=p1;
+    p1->left=p3;
+    p1->right=p4;
+    p2->left=p5;
+    p2->right=p6;
+   
+
+      //        45
+     //      /       \
+    //     56        78
+   //     /  \      /  \
+  //    23    86   34   13
+
+    cout<<"\n  ***  PreOrder Traversal  ***";
+    preorder(root);
+    cout<<"\n  ***  PostOrder Traversal  ***";
+    postorder(root);
+    cout<<"\n  ***  InOrder Traversal  ***";
+    inorder(root);
+  
+   return 0;
+}
