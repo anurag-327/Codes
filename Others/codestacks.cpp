@@ -1,7 +1,4 @@
 #include<bits/stdc++.h>
-// #include<iostream>
-// #include<conio.h>
-// #include<stdlib.h>
 using namespace std;
 struct stacks
 {
@@ -31,7 +28,7 @@ int isFull(stacks *ptr)
         return(0);
      }
 }
-void push(stacks *ptr,int val)
+void push(stacks* ptr,int val)
 {
     if(isFull(ptr))
     {
@@ -44,94 +41,40 @@ void push(stacks *ptr,int val)
         cout<<"\n data pushed";
     }
 }
-int pop(stacks *ptr)
+int pop(stacks* ptr)
 {
     int val;
-    if(isEmpty)
+    if(isEmpty(ptr))
     {
         cout<<"\n stack underflow";
         return(0);
     }
     else
     {
+        cout<<2;
       val=ptr->arr[ptr->top];
-      ptr->top; 
+
+      ptr->top--; 
       return(val);
     }
 }
-int peek(stacks *ptr,int index)
-{
-    int val;
-    if(isEmpty)
-    {
-        cout<<"\n stack underflow";
-        return(-1);
-    }
-    else
-    {
-        int pos=ptr->top-index+1;
-        if(pos<=0)
-        {
-            cout<<"\n wrong index";
-            return(-1);
-        }
-        else
-        {
-            return(ptr->arr[pos]);
-        }
-    }
-}
-void peep(stacks *ptr)
-{
-    if(isEmpty)
-    {
-        cout<<"\n stack underflow";
-        // return(-1);
-    }
-    else
-    {
-         for(int i=0;i<ptr->top;i++)
-        {
-            cout<<ptr->arr[i];
-        }
-            // return(0
-    }
-}
+
 int main()
 {
-    stacks *s;
+    stacks *s=new stacks;
     s->size=100;
     s->top=-1;
-    s->arr=new int[s->size*sizeof(int)];
-
-    // check stack is Empty or Full
-    // isEmpty(s);
+    s->arr=new int[(s->size)*(sizeof(int))];
 
 
-    // // pushing data in stack
     push(s,28);
     push(s,56);
     push(s,44);
     push(s,67);
     push(s,99);
-
-    // // peeking data from stack
-   
-    peep(s);
-
-    // // peek data from index
-
-    peek(s,3);
-
-    // // popping data from stack
-
-    pop(s);
-    pop(s);
-
-    // // peeking data from stack
- 
-    peep(s);
-
-
+    cout<<endl<<pop(s);
+    // cout<<2;
+    cout<<endl<<pop(s);
+    // cout<<"hi"<<endl;
     return(0);
 }
