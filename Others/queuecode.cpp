@@ -77,18 +77,18 @@ void enque(que *s,int val)
 }
 int main()
 {
-    que s;
-    s.size=10;
-    s.front=s.rear=-1;
-    s.arr=new int[s.size*sizeof(int)];
+    que *s=new que;
+    s->size=10;
+    s->front=s->rear=-1;
+    s->arr=new int[s->size*sizeof(int)];
  
-     enque(&s,45);
-     enque(&s,56);
-     enque(&s,32);
-     display(&s);
-     delque(&s);
-     delque(&s);
-     delque(&s);
+     delque(s);
+     enque(s,45);
+     enque(s,56);
+     enque(s,32);
+    //  display(&s);
+     delque(s);
+     delque(s);
 
     
 }
