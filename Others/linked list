@@ -1,0 +1,114 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct node
+{
+    int data;
+    node *next;
+};
+void printll(node *head)
+{
+    node *temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+ 
+node *insertatbeg(node* head,int data)
+{
+    node *p=new node;
+    p->data=data;
+    p->next=head;
+    head=p;
+    return head;
+}
+node *insertatlast(node* head,int data)
+{
+    node *p=new node();
+    p->data=data;
+    p->next=NULL;
+    node* temp=head;
+    while(temp->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=p;
+    return head ; 
+}
+void *insertatposn(node *head,int data,int position)
+{
+    if(position<0)
+    {
+        cout<<"Invalid Insertion"<<endl;
+        return 0;
+    }
+    node *temp=head;
+    node *p=new node();
+    p->data=data;
+    for(int i=0;i<position-1;i++)
+    {
+        temp=temp->next;
+    }
+    p->next=temp->next;
+    temp->next=p;
+    return 0;
+}
+node *delfromstart(node* head)
+{
+     node *temp=head;
+     head=head->next;
+     delete(temp);
+     return head;
+}
+ 
+void *delfromend(node* head)
+{
+    node* temp,p;
+    temp=head;
+    temp=temp->next;
+    while(temp->next->next!=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=NULL;
+    delete(temp->next);
+    return 0;
+}
+int main()
+{
+    node *head;
+    node *first=new node;
+    node *second=new node;
+    node *third=new node;
+    node *fourth=new node;
+ 
+    first->data=14;
+    second->data=35;
+    third->data=51;
+    fourth->data=62;
+ 
+    head=first;
+    first->next=second;
+    second->next=third;
+    third->next=fourth;
+    fourth->next=NULL;
+    printll(head);
+    cout<<endl;
+    head=insertatbeg(head,22);
+    printll(head);
+    cout<<endl;
+    head=insertatlast(head,44);
+    printll(head);
+    cout<<endl;
+    insertatposn(head,66,3);
+    printll(head);
+    cout<<endl;
+    head=delfromstart(head);
+    printll(head);
+    cout<<endl;
+    delfromend(head);
+    printll(head);
+    return 0;
+}
+ 
